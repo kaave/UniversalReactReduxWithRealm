@@ -14,7 +14,7 @@ export interface Types {
   email: string;
   passwordHash: string;
   roles?: Role[];
-  group?: Group;
+  group?: Group[];
   ownerKnowledges?: KnowledgeInfo[];
   editorKnowledges?: KnowledgeReport[];
   createAt?: Date;

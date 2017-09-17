@@ -10,9 +10,9 @@ import { Types as KnowledgeReport } from './knowledgeReport';
 
 export interface Types {
   id: string;
-  owner: User;
+  owner: User[];
   title: string;
-  category?: Category;
+  category?: Category[];
   tags?: Tag[];
   readGroups?: Group[];
   editGroups?: Group[];

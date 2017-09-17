@@ -7,8 +7,8 @@ import { Types as KnowledgeInfo } from './knowledgeInfo';
 
 export interface Types {
   id: string;
-  info?: KnowledgeInfo;
-  editor?: User;
+  info?: KnowledgeInfo[];
+  editor?: User[];
   source: string;
   createAt: Date;
   updateAt: Date;
