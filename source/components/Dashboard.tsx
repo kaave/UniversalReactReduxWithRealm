@@ -3,7 +3,9 @@ import * as React from 'react';
 import Contributes from './dashboard/Contributes';
 import LatestNews from './dashboard/LatestNews';
 import * as CategoriesActions from '../actions/categories';
+import * as TagsActions from '../actions/tags';
 import { getCategoriesEntity } from '../epics/categories';
+import { getTagsEntity } from '../epics/tags';
 import FetchDataProps from '../types/FetchDataProps';
 
 export interface Props {
@@ -15,6 +17,7 @@ export interface Props {
 export default class Dashboard extends React.Component<Props, {}> {
   static async fetchData({ store, params }: FetchDataProps) {
     store.dispatch(CategoriesActions.getDone(await getCategoriesEntity()));
+    store.dispatch(TagsActions.getDone(await getTagsEntity()));
   }
 
   constructor(props: Props) {

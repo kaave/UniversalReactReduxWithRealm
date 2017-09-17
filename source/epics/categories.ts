@@ -1,5 +1,3 @@
-// @flow
-
 import * as Rx from 'rxjs';
 import 'isomorphic-fetch';
 import 'typescript-fsa-redux-observable';
