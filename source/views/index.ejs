@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="/favicon.ico" type="image/ico" />
+    <%- meta %>
+    <%- title %>
+    <%- link %>
+</head>
+
+<body>
+<div id="mount-point" data-state='<%- preloadedState %>'><%- markup %></div>
+<!--
+<aside class="main-menu">
+    <nav class="main-menu__nav">
+        <ul class="main-menu__menus">
+            <% [
+                ['dashboard', 'Dashboard'],
+                ['list', 'Categories'],
+                ['tags', 'Tags'],
+                ['cog', 'Settings'],
+                ['search', 'Search'],
+                ['sign-out', 'Signout'],
+            ].forEach(([key, desc], i) => { %>
+            <li class="main-menu__menu main-menu__menu--<%= key %> <%= i === 0 ? 'main-menu__menu--active' : '' %>">
+                <button class="main-menu__button">
+                    <span class="main-menu__icon fa fa-<%= key %>" aria-hidden="true"></span>
+                    <span class="main-menu__desc"><%= desc %></span>
+                </button>
+            </li>
+            <% }) %>
+        </ul>
+    </nav>
+</aside>
+<div class="global-wrapper">
+    <header id="header" class="header">
+        <h1 class="header__header">Local Knowledge</h1>
+    </header>
+    <main id="main" class="main" role="main">
+        <section class="editor">
+            <section class="editor__contents">
+                <section class="editor__form">
+                    <h2 class="form__header">
+                        <span class="fa-stack fa-lg">
+                            <span class="fa fa-circle fa-stack-2x"></span>
+                            <span class="fa fa-pencil fa-stack-1x fa-inverse"></span>
+                        </span>
+                        EDIT
+                    </h2>
+                    <form class="form">
+                        <div class="form__title-and-templates">
+                            <div class="form__group form__group--title" aria-required="true">
+                                <label class="form__label">
+                                    <span class="fa fa-header"></span> TITLE
+                                </label>
+                                <input type="text" class="form__text">
+                            </div>
+                            <div class="form__group form__group--templates" aria-required="true">
+                                <label class="form__label">
+                                    <span class="fa fa-file-text"></span> TEMPLATES
+                                </label>
+                                <select class="form__select">
+                                    <option value="">Choose Template, if you need.</option>
+                                    <% ['TEMPLATE1', 'TEMPLATE2', 'TEMPLATE2'].forEach(name => { %>
+                                    <option value="<%= name %>"><%= name %></option>
+                                    <% }) %>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form__category-and-tags">
+                            <div class="form__group form__group--category" aria-required="true">
+                                <label class="form__label">
+                                    <span class="fa fa-list"></span> CATEGORY (separate symbol: /)
+                                </label>
+                                <input type="text" class="form__text">
+                            </div>
+                            <div class="form__group form__group--tags">
+                                <label class="form__label">
+                                    <span class="fa fa-tags"></span> TAGS (separate symbol: ,)
+                                </label>
+                                <input type="text" class="form__text">
+                            </div>
+                        </div>
+                        <div class="form__group" aria-required="true">
+                            <label class="form__label">
+                                <span class="fa fa-eye"></span> PERMISSION: READ
+                            </label>
+                            <ul class="form__list form__list--buttons">
+                                <% ['管理者', 'エンジニア', 'デザイナー', 'ディレクター'].forEach((desc, i) => { %>
+                                <li class="form__list-content">
+                                    <button class="form__button">
+                                        <%= desc %>
+                                    </button>
+                                </li>
+                                <% }) %>
+                            </ul>
+                        </div>
+                        <div class="form__group" aria-required="true">
+                            <label class="form__label">
+                                <span class="fa fa-pencil"></span> PERMISSION: EDIT
+                            </label>
+                            <ul class="form__list form__list--buttons">
+                                <% ['管理者', 'エンジニア', 'デザイナー', 'ディレクター'].forEach((desc, i) => { %>
+                                <li class="form__list-content">
+                                    <button class="form__button">
+                                        <%= desc %>
+                                    </button>
+                                </li>
+                                <% }) %>
+                            </ul>
+                        </div>
+                        <div class="form__group">
+                            <label class="form__label">
+                                <span class="fa fa-slack"></span> Notificate to Slack channel
+                            </label>
+                            <select class="form__select">
+                                <option value="">(No notification)</option>
+                                <% ['general', 'engineer', 'announce'].forEach(name => { %>
+                                <option value="<%= name %>"># <%= name %></option>
+                                <% }) %>
+                            </select>
+                        </div>
+                        <div class="form__group" aria-required="true">
+                            <label class="form__label">
+                                <span class="fa fa-book"></span> Knowledge
+                            </label>
+                            <div class="form__knowledge">
+                                <button class="form__knowledge-submit">SUBMIT</button>
+                                <textarea name="knowledge" class="form__knowledge-textarea"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+                <section class="editor__preview preview">
+                    <h2 class="preview__header">
+                        <span class="fa-stack fa-lg">
+                            <span class="fa fa-circle fa-stack-2x"></span>
+                            <span class="fa fa-eye fa-stack-1x fa-inverse"></span>
+                        </span>
+                        Preview
+                    </h2>
+                    <article class="preview__display markdown-body"><% include ./_preview-sample %></article>
+                </section>
+            </section>
+        </section>
+    </main>
+</div>
+-->
+
+<script src="/index.js"></script>
+</body>
+</html>

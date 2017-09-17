@@ -1,0 +1,79 @@
+@import "./modules/_variables.css";
+@import "./modules/_reset.css";
+
+:root {
+    /*--maxWidth: 980px;*/
+    --wrapperPadding: 10px;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.4rem;
+    background: var(--color-main);
+    color: var(--color-font);
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+}
+
+.image-container {
+    .image--active,
+    .image--focus {
+        display: none;
+    }
+
+    &:hover {
+        .image--focus {
+            display: block;
+        }
+
+        .image--normal,
+        .image--active {
+            display: none;
+        }
+    }
+
+    &:active {
+        .image--active {
+            display: block;
+        }
+
+        .image--normal,
+        .image--focus {
+            display: none;
+        }
+    }
+}
+
+:focus {
+    outline: #333 auto 3px;
+}
+
+.global-wrapper {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.manual {
+    width: 100%;
+    max-width: 300px;
+    padding: 0 var(--wrapperPadding);
+}

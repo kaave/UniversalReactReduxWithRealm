@@ -1,0 +1,59 @@
+<%
+const assetName = 'signin';
+%>
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Signin</title>
+<% if (process.env.NODE_ENV === 'production') { %>
+    <link rel="stylesheet" href="/<%= assetName %>.css">
+<% } %>
+</head>
+<body>
+<div class="global-wrapper">
+    <main id="main" class="main" role="main">
+        <section class="manual">
+            <form>
+                <div class="manual__username-or-email">
+                    <input type="text" class="manual__input" placeholder="Username or EMail">
+                </div>
+                <div class="manual__password">
+                    <input type="password" class="manual__input" placeholder="Password">
+                </div>
+                <div class="manual__submit">
+                    <button>Sign in</button>
+                </div>
+                <div class="manual__forgot-password">
+                    <a href="/forgot-password">Forgot password 💀</a>
+                </div>
+            </form>
+        </section>
+        <section class="oauth">
+            <article class="oauth__article">
+                <a href="/oauth/google" class="oauth__signin oauth__signin--google image-container">
+                    <img src="/images/google_signin_buttons/btn_google_signin_dark_normal_web.png"
+                         alt="Google" class="oauth__image oauth__image--google image image--normal"
+                         srcset="/images/google_signin_buttons/btn_google_signin_dark_normal_web.png 1x,
+                                 /images/google_signin_buttons/btn_google_signin_dark_normal_web@2x.png 2x"
+                    >
+                    <img src="/images/google_signin_buttons/btn_google_signin_dark_focus_web.png"
+                         alt="Google" class="oauth__image oauth__image--google image image--focus"
+                         srcset="/images/google_signin_buttons/btn_google_signin_dark_focus_web.png 1x,
+                                 /images/google_signin_buttons/btn_google_signin_dark_focus_web@2x.png 2x"
+                    >
+                    <img src="/images/google_signin_buttons/btn_google_signin_dark_pressed_web.png"
+                         alt="Google" class="oauth__image oauth__image--google image image--active"
+                         srcset="/images/google_signin_buttons/btn_google_signin_dark_pressed_web.png 1x,
+                                 /images/google_signin_buttons/btn_google_signin_dark_pressed_web@2x.png 2x"
+                    >
+                </a>
+            </article>
+        </section>
+    </main>
+</div>
+<script src="/<%= assetName %>.js"></script>
+</body>
+</html>

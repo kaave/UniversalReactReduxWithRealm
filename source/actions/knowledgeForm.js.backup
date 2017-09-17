@@ -1,0 +1,101 @@
+// @flow
+
+import { createAction } from 'redux-actions';
+
+type ActionTypes = 'KNOWLEDGE_FORM_INIT' |
+  'KNOWLEDGE_FORM_UPDATE_TITLE' |
+  'KNOWLEDGE_FORM_UPDATE_CATEGORY' |
+  'KNOWLEDGE_FORM_UPDATE_TAGS' |
+  'KNOWLEDGE_FORM_UPDATE_READ_PERMISSION' |
+  'KNOWLEDGE_FORM_UPDATE_EDIT_PERMISSION' |
+  'KNOWLEDGE_FORM_UPDATE_SLACK_CHANNEL' |
+  'KNOWLEDGE_FORM_UPDATE_CAN_UNAUTH_READ' |
+  'KNOWLEDGE_FORM_UPDATE_IS_PRIVATE' |
+  'KNOWLEDGE_FORM_UPDATE_REPORT_ID' |
+  'KNOWLEDGE_FORM_UPDATE_SOURCE' |
+  'KNOWLEDGE_FORM_CHANGE_TEMPLATE' |
+  'KNOWLEDGE_FORM_SUBMIT_START' |
+  'KNOWLEDGE_FORM_SUBMIT_DONE' |
+  'KNOWLEDGE_FORM_SUBMIT_FAIL';
+
+const types: { [key: string]: ActionTypes } = {
+  init: 'KNOWLEDGE_FORM_INIT',
+  updateTitle: 'KNOWLEDGE_FORM_UPDATE_TITLE',
+  updateCategory: 'KNOWLEDGE_FORM_UPDATE_CATEGORY',
+  updateTags: 'KNOWLEDGE_FORM_UPDATE_TAGS',
+  updateReadPermission: 'KNOWLEDGE_FORM_UPDATE_READ_PERMISSION',
+  updateEditPermission: 'KNOWLEDGE_FORM_UPDATE_EDIT_PERMISSION',
+  updateSlackChannel: 'KNOWLEDGE_FORM_UPDATE_SLACK_CHANNEL',
+  updateCanUnauthRead: 'KNOWLEDGE_FORM_UPDATE_CAN_UNAUTH_READ',
+  updateIsPrivate: 'KNOWLEDGE_FORM_UPDATE_IS_PRIVATE',
+  updateReportId: 'KNOWLEDGE_FORM_UPDATE_REPORT_ID',
+  updateSource: 'KNOWLEDGE_FORM_UPDATE_SOURCE',
+  changeTemplate: 'KNOWLEDGE_FORM_CHANGE_TEMPLATE',
+  submitStart: 'KNOWLEDGE_FORM_SUBMIT_START',
+  submitDone: 'KNOWLEDGE_FORM_SUBMIT_DONE',
+  submitFail: 'KNOWLEDGE_FORM_SUBMIT_FAIL',
+};
+
+export const Types = Object.freeze(types);
+
+export const actions = {
+  [Types.init]() {
+    return createAction(types.init)();
+  },
+
+  [Types.updateTitle](val: string) {
+    return createAction(types.updateTitle)(val);
+  },
+
+  [Types.updateCategory](val: string) {
+    return createAction(types.updateCategory)(val);
+  },
+
+  [Types.updateTags](val: string[]) {
+    return createAction(types.updateTags)(val);
+  },
+
+  [Types.updateReadPermission](val: string[]) {
+    return createAction(types.updateReadPermission)(val);
+  },
+
+  [Types.updateEditPermission](val: string[]) {
+    return createAction(types.updateEditPermission)(val);
+  },
+
+  [Types.updateSlackChannel](val: string) {
+    return createAction(types.updateSlackChannel)(val);
+  },
+
+  [Types.updateCanUnauthRead](val: boolean) {
+    return createAction(types.updateCanUnauthRead)(val);
+  },
+
+  [Types.updateIsPrivate](val: boolean) {
+    return createAction(types.updateIsPrivate)(val);
+  },
+
+  [Types.updateReportId](val: string) {
+    return createAction(types.updateReportId)(val);
+  },
+
+  [Types.updateSource](val: string) {
+    return createAction(types.updateSource)(val);
+  },
+
+  [Types.changeTemplate](val: string) {
+    return createAction(types.changeTemplate)(val);
+  },
+
+  [Types.submitStart]() {
+    return createAction(types.submitStart)();
+  },
+
+  [Types.submitDone](val: {}) {
+    return createAction(types.submitDone)(val);
+  },
+
+  [Types.submitFail](val: Error) {
+    return createAction(types.submitFail)(val);
+  },
+};

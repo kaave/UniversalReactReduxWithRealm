@@ -1,0 +1,24 @@
+// @flow
+import { handleActions } from 'redux-actions';
+
+import { Types as knowledgeForm } from '../actions/knowledgeForm';
+import KnowledgEditFormModel from '../models/KnowledgeEditForm';
+
+export type Types = typeof KnowledgEditFormModel;
+
+export default handleActions({
+  [knowledgeForm.init]: () => new KnowledgEditFormModel(),
+  [knowledgeForm.updateTitle]: (state, action) => state.set({ title: action.payload }),
+  [knowledgeForm.updateCategory]: (state, action) => state.set({ category: action.payload }),
+  [knowledgeForm.updateTags]: (state, action) => state.set({ tags: action.payload }),
+  [knowledgeForm.updateReadPermission]: (state, action) => state.set({ readPermission: action.payload }),
+  [knowledgeForm.updateEditPermission]: (state, action) => state.set({ editPermission: action.payload }),
+  [knowledgeForm.updateSlackChannel]: (state, action) => state.set({ slackChannel: action.payload }),
+  [knowledgeForm.updateCanUnauthRead]: (state, action) => state.set({ canUnauthRead: action.payload }),
+  [knowledgeForm.updateIsPrivate]: (state, action) => state.set({ isPrivate: action.payload }),
+  [knowledgeForm.updateSource]: (state, action) => state.set({ source: action.payload }),
+  // [knowledgeForm.changeTemplate]: (state, action) => state.set({ title: action.payload }),
+  // [knowledgeForm.submitStart]: (state, action) => state.set({ title: action.payload }),
+  [knowledgeForm.submitDone]: () => new KnowledgEditFormModel(),
+  // [knowledgeForm.submitFail]: () => state.set({ title: action.payload }),
+}, new KnowledgEditFormModel());

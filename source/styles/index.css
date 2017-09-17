@@ -1,0 +1,229 @@
+@import "./modules/_variables.css";
+@import "./modules/_reset.css";
+@import "../../node_modules/github-markdown-css/github-markdown.css";
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.4em;
+    font-family: var(--fontFamily-base);
+    color: var(--color-font);
+    background: var(--color-main);
+}
+
+pre,
+textarea {
+    font-family: var(--fontFamily-mono);
+}
+
+.header {
+    height: calc(90px / 16 * 9);
+    padding-left: 5px;
+
+    &__header {
+        font-size: 3.2rem;
+        letter-spacing: 0.05em;
+    }
+}
+
+.global-wrapper {
+    margin: 0 30px;
+}
+
+.editor {
+    &__contents {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    &__form,
+    &__preview {
+        width: 49%;
+    }
+}
+
+.form,
+.preview {
+    &__header {
+        font-size: 2.4rem;
+        letter-spacing: 0.1em;
+        margin-bottom: 0.3em;
+    }
+}
+
+.form {
+    background: #ddd;
+    padding: 15px 20px;
+    box-shadow: 0 0 2px 0 #000 inset;
+
+    &__group {
+        display: flex;
+        flex-direction: column;
+
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+
+        &[aria-required="true"] .form__label::after {
+            content: "*";
+            color: var(--color-pink);
+        }
+    }
+
+    &__label {
+        font-size: 1.2rem;
+        letter-spacing: 0.1em;
+        margin-bottom: 0.5em;
+    }
+
+    &__text,
+    &__select {
+        appearance: none;
+        border-radius: 0;
+        padding: 0.4em 0.8em;
+        font-size: 1.2em;
+        border: 0;
+        border-bottom: solid 1px #aaa;
+        transition: all 0.6s var(--easeOut-quart);
+
+        &:hover,
+        &:focus {
+            background: #eee;
+            border-bottom-color: var(--color-font);
+        }
+    }
+
+    &__button {
+        appearance: none;
+        padding: 0.2em 0.6em;
+        border: solid 1px var(--color-font);
+        font-size: 1.4rem;
+        font-weight: var(--fontWeight-bold);
+        user-select: none;
+        outline: none;
+        cursor: pointer;
+    }
+
+    &__knowledge {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__knowledge-textarea {
+        appearance: none;
+        border-radius: 0;
+        border: solid 1px #aaa;
+        padding: 0.4em 0.8em;
+        font-size: 1.1em;
+        min-height: 30em;
+        transition: all 0.6s var(--easeOut-quart);
+
+        &:hover,
+        &:focus {
+            background: #eee;
+            border-color: var(--color-font);
+        }
+    }
+
+    &__list {
+        display: inline-flex;
+        flex-wrap: wrap;
+        justify-content: baseline;
+        align-items: center;
+    }
+
+    &__list-content {
+        margin-right: 5px;
+    }
+
+    &__title-and-templates,
+    &__category-and-tags {
+        display: flex;
+        justify-content: space-between;
+
+        > * {
+            width: 49%;
+        }
+    }
+}
+
+.preview {
+    &__display {
+        border: solid 1px #949494;
+        box-shadow: 0 0 2px 0 #949494 inset;
+        padding: 15px 20px;
+    }
+}
+
+.main-menu {
+    position: fixed;
+    right: 0;
+
+    &__menus {
+        display: inline-flex;
+        justify-content: baseline;
+        align-items: center;
+    }
+
+    &__button {
+        appearance: none;
+        border: 0;
+        outline: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        padding: 1px 5px;
+        cursor: pointer;
+        background: #ddd;
+
+        &:hover .main-menu__desc::after {
+            width: 100%;
+        }
+
+        &:active {
+            background: #ccc;
+        }
+    }
+
+    &__menu {
+        width: 90px;
+        height: calc(90px / 16 * 9);
+        user-select: none;
+
+        &--active {
+            .main-menu__button {
+                color: #ddd;
+                background: var(--color-font);
+            }
+        }
+    }
+
+    &__icon {
+        font-size: 2.8rem;
+    }
+
+    &__desc {
+        position: relative;
+        display: inline-block;
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+
+        &::after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 1px;
+            background: var(--color-font);
+            position: relative;
+            bottom: -0px;
+            transition: width 0.3s var(--easeOut-quart);
+        }
+    }
+}
