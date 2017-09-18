@@ -5,6 +5,7 @@ import groupsEpics from './groups';
 import newsEpics from './news';
 import rolesEpics from './roles';
 import tagsEpics from './tags';
+import usersEpics from './users';
 
 export default createEpicMiddleware(combineEpics(
   ...categoriesEpics,
@@ -12,4 +13,5 @@ export default createEpicMiddleware(combineEpics(
   ...newsEpics,
   ...rolesEpics,
   ...tagsEpics,
+  ...usersEpics,
 ));

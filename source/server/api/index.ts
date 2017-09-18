@@ -7,6 +7,7 @@ import categories from './categories';
 import groups from './groups';
 import roles from './roles';
 import tags from './tags';
+import users from './users';
 
 const router = Router();
 router.get('/', getVerifyMiddleware('Api'), (req: Request, res: Response) => {
@@ -19,6 +20,7 @@ router.use('/categories', categories);
 router.use('/groups', groups);
 router.use('/roles', roles);
 router.use('/tags', tags);
+router.use('/users', users);
 
 export function setApiRoutes(app: Application) {
   app.use(config.route.api, router);

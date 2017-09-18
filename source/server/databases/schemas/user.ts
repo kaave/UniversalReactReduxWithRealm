@@ -13,8 +13,8 @@ export interface Types {
   displayName: string;
   email: string;
   passwordHash: string;
-  roles?: Role[];
-  group?: Group[];
+  role?: Role[];
+  groups?: Group[];
   ownerKnowledges?: KnowledgeInfo[];
   editorKnowledges?: KnowledgeReport[];
   createAt?: Date;
@@ -30,8 +30,8 @@ export default {
     displayName: 'string',
     email: { type: 'string', indexed: true },
     passwordHash: 'string',
-    roles: { type: 'linkingObjects', objectType: 'Role', property: 'users' },
-    group: { type: 'linkingObjects', objectType: 'Group', property: 'users' },
+    role: { type: 'linkingObjects', objectType: 'Role', property: 'users' },
+    groups: { type: 'linkingObjects', objectType: 'Group', property: 'users' },
     ownerKnowledges: { type: 'list', objectType: 'KnowledgeInfo' },   // managementing knowledges
     editorKnowledges: { type: 'list', objectType: 'KnowledgeReport' },  // edited knowledges
 

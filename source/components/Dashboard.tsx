@@ -6,10 +6,12 @@ import * as CategoriesActions from '../actions/categories';
 import * as GroupsActions from '../actions/groups';
 import * as RolesActions from '../actions/roles';
 import * as TagsActions from '../actions/tags';
+import * as UsersActions from '../actions/users';
 import { getCategoriesEntity } from '../epics/categories';
 import { getGroupsEntity } from '../epics/groups';
 import { getRolesEntity } from '../epics/roles';
 import { getTagsEntity } from '../epics/tags';
+import { getUserSummariesEntity } from '../epics/users';
 import FetchDataProps from '../types/FetchDataProps';
 
 export interface Props {
@@ -24,6 +26,7 @@ export default class Dashboard extends React.Component<Props, {}> {
     store.dispatch(GroupsActions.getDone(await getGroupsEntity()));
     store.dispatch(RolesActions.getDone(await getRolesEntity()));
     store.dispatch(TagsActions.getDone(await getTagsEntity()));
+    store.dispatch(UsersActions.getSummariesDone(await getUserSummariesEntity()));
   }
 
   constructor(props: Props) {
