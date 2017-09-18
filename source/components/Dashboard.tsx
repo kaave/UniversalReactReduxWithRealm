@@ -4,9 +4,11 @@ import Contributes from './dashboard/Contributes';
 import LatestNews from './dashboard/LatestNews';
 import * as CategoriesActions from '../actions/categories';
 import * as GroupsActions from '../actions/groups';
+import * as RolesActions from '../actions/roles';
 import * as TagsActions from '../actions/tags';
 import { getCategoriesEntity } from '../epics/categories';
 import { getGroupsEntity } from '../epics/groups';
+import { getRolesEntity } from '../epics/roles';
 import { getTagsEntity } from '../epics/tags';
 import FetchDataProps from '../types/FetchDataProps';
 
@@ -20,6 +22,7 @@ export default class Dashboard extends React.Component<Props, {}> {
   static async fetchData({ store, params }: FetchDataProps) {
     store.dispatch(CategoriesActions.getDone(await getCategoriesEntity()));
     store.dispatch(GroupsActions.getDone(await getGroupsEntity()));
+    store.dispatch(RolesActions.getDone(await getRolesEntity()));
     store.dispatch(TagsActions.getDone(await getTagsEntity()));
   }
 
