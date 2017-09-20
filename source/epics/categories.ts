@@ -13,10 +13,10 @@ export function getCategoriesEntity() {
     .then((json: CategoriesEntity) => json);
 }
 
-const getDoneEpic: Epic<Action, void> = (actions$, store) => actions$.ofAction(Categories.getStart)
+const getDoneEpic: Epic<Action, void> = (actions$, store) => actions$.ofAction(Categories.categoriesGetStart)
   .mergeMap(
     action => Rx.Observable.fromPromise(getCategoriesEntity())
-      .map(json => Categories.getDone(json)),
+      .map(json => Categories.categoriesGetDone(json)),
   );
 
 export default [

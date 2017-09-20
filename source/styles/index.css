@@ -1,9 +1,12 @@
 @import "./modules/_variables.css";
 @import "./modules/_reset.css";
 @import "../../node_modules/github-markdown-css/github-markdown.css";
+@import "./modules/_categories-tree.css";
 
 html {
     font-size: 62.5%;
+    width: 100vw;
+    height: 100vh;
 }
 
 body {
@@ -11,12 +14,29 @@ body {
     font-family: var(--fontFamily-base);
     color: var(--color-font);
     background: var(--color-main);
+    width: 100%;
+    height: 100%;
 }
 
 pre,
 textarea {
     font-family: var(--fontFamily-mono);
 }
+
+.mount-point {
+    width: 100%;
+    height: 100%;
+}
+
+.dashboard {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+/*
 
 .header {
     height: calc(90px / 16 * 9);
@@ -227,3 +247,5 @@ textarea {
         }
     }
 }
+
+*/

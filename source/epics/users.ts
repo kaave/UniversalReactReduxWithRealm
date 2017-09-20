@@ -7,6 +7,7 @@ import { combineEpics, createEpicMiddleware, Epic } from 'redux-observable';
 import * as Users from '../actions/users';
 import { UserSummaryEntity } from '../entities/userSummary';
 
+// TODO: やってることはDataStore層なんだよな〜
 export function getUserSummariesEntity() {
   return fetch('http://localhost:3000/api/users')
     .then(data => data.json())

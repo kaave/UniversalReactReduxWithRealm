@@ -6,7 +6,8 @@ import { returntypeof } from 'react-redux-typescript';
 
 import * as Routes from '../routes';
 // import { actions as KnowledgeActions } from '../actions/knowledgeForm';
-import { actions as NewsActions } from '../actions/news';
+// import { actions as NewsActions } from '../actions/news';
+import { actions as CategoriesActions } from '../actions/categories';
 import { GlobalState } from '../reducers';
 import FetchDataProps from '../types/FetchDataProps';
 
@@ -16,7 +17,7 @@ function mapStateToProps(state: GlobalState) {
 
 function mapDispatchToProps(dispatch: Dispatch<any>) {
   return bindActionCreators(
-    { ...NewsActions },
+    { ...CategoriesActions },
     dispatch,
   );
 }
@@ -26,27 +27,21 @@ const dispatchProps = returntypeof(mapDispatchToProps);
 
 type Props = typeof stateProps & typeof dispatchProps;
 
-function Root(props: Props) {
-  return (
-    <div>
-      <Switch>
-        {// tslint:disable-next-line
-          Routes.routes.map(({ path, component: MountComponent, exact }: Routes.Route) => (
-            <Route
-              {...{ path, exact }}
-              key={`${Math.random()}ROUTE_`}
-              // tslint:disable-next-line
-              render={reactRouterProps => <MountComponent {...{ ...reactRouterProps, ...props }} />}
-            />
-          ))
-        }
-        {/* {redirects} */}
-      </Switch>
-    </div>
-  );
-}
-
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Root);
+)((props: Props) => (
+  <Switch>
+    {// tslint:disable-next-line
+      Routes.routes.map(({ path, component: MountComponent, exact }: Routes.Route) => (
+        <Route
+          {...{ path, exact }}
+          key={`${Math.random()}ROUTE_`}
+          // tslint:disable-next-line
+          render={reactRouterProps => <MountComponent {...{ ...reactRouterProps, ...props }} />}
+        />
+      ))
+    }
+    {/* {redirects} */}
+  </Switch>
+));

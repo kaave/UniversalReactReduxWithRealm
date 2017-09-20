@@ -6,9 +6,15 @@ import logger from 'redux-logger';
 import reducers from '../reducers/';
 import epicMiddleware from '../epics';
 
-// const composeEnhancers = typeof window !== 'undefined' ?
-//   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose :
-//   compose;
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
+  }
+}
+
+const composeEnhancers = typeof window !== 'undefined' ?
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose :
+  compose;
 
 function getAppliedMiddleware(isServer: boolean) {
   return isServer ? applyMiddleware(epicMiddleware) :
@@ -19,7 +25,6 @@ export default function getStore({ preloadedState, isServer }: { preloadedState?
   return createStore(
     reducers,
     preloadedState || {},
-    getAppliedMiddleware(isServer || false),
-    // composeEnhancers(applyMiddleware(...middleware))
+    composeEnhancers(getAppliedMiddleware(isServer || false)),
   );
 }

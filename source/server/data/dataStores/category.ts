@@ -20,6 +20,7 @@ export function get() {
         if (!currentInfo) {
           currentInfo = {
             path: pathDetail,
+            fullPath: `/${pathTree.slice(0, index + 1).join('/')}`,
             count: 0,
             children: [],
           };
@@ -41,6 +42,7 @@ export function get() {
       return tempData;
     }, {
       path: '/',
+      fullPath: '/',
       count: 0,
       children: [],
     } as CategoriesEntity);
