@@ -1,7 +1,7 @@
 @import "./modules/_variables.css";
 @import "./modules/_reset.css";
 @import "../../node_modules/github-markdown-css/github-markdown.css";
-@import "./modules/_categories-tree.css";
+@import "./modules/_dashboard.css";
 
 html {
     font-size: 62.5%;
@@ -12,6 +12,7 @@ html {
 body {
     font-size: 1.4em;
     font-family: var(--fontFamily-base);
+    font-feature-settings : "palt";
     color: var(--color-font);
     background: var(--color-main);
     width: 100%;
@@ -27,14 +28,6 @@ textarea {
     width: 100%;
     height: 100%;
 }
-
-.dashboard {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
 
 /*
 

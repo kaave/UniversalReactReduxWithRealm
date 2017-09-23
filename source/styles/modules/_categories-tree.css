@@ -4,6 +4,8 @@
     width: 240px;
     border-right: solid 1px #aaa;
     background: #dedede;
+    letter-spacing: 0.05em;
+    overflow-y: scroll;
 
     &__parent {
         width: 100%;
@@ -35,6 +37,7 @@
 
     &__desc {
         display: flex;
+        letter-spacing: 0.05em;
 
         &:hover {
             background: #ccc;

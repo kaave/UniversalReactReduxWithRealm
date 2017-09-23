@@ -10,8 +10,10 @@ interface Props {
 export default function SelectCategoryInfo({ selectPath, category }: Props) {
   return (
     <div className="select-category-info">
-      <section className="select-category-info__section select-category-info__section--header">
-        <h2 className="select-category-info__header">{selectPath}</h2>
+      <section className="select-category-info__knowledges">
+        <h2 className="select-category-info__knowledges-header">
+          Fresh knowledges
+        </h2>
       </section>
     </div>
   );

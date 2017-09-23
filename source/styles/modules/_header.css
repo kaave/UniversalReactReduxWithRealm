@@ -1,0 +1,50 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+
+    &__left-section {
+        display: flex;
+        align-items: center;
+        flex: 1 1 auto;
+    }
+
+    &__symbol {
+      width: 240px;
+      text-align: center;
+    }
+
+    &__title {
+      flex: 1 1 auto;
+      display: flex;
+      align-items: center;
+      font-size: 1.8rem;
+      padding-left: 10px;
+      letter-spacing: 0.1em;
+    }
+
+    &__title-select-path {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background: #fff;
+        bottom: -4px;
+        left: 0;
+      }
+    }
+
+    &__title-select-path-slash {
+      margin: 0 0.3em;
+    }
+
+    &__title-select-path-link {
+      appearance: none;
+      outline: none;
+      border: 0;
+      background: transparent;
+    }
+}

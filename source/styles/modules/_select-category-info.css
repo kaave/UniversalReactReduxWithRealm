@@ -1,0 +1,5 @@
+.select-category-info {
+  flex: 1 1 auto;
+  padding: 20px;
+  overflow-y: scroll;
+}

@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import HeaderComponent from './common/Header';
 import CategoriesTreeComponent from './dashboard/CategoriesTree';
 import DashboardRootComponent from './dashboard/DashboardRoot';
 import SelectCategoryInfoComponent from './dashboard/SelectCategoryInfo';
@@ -58,19 +59,31 @@ export default class Dashboard extends React.Component<Props, {}> {
 
     return (
       <section className="dashboard">
-        <CategoriesTreeComponent
-          {...props}
-          onOpenStateChangeClick={this.handleCategoriesOpenStateChangeClick}
-          onSelectClick={this.handleCategoriesSelectClick}
-        />
-        {props.selectPath === '/' ?
-          <DashboardRootComponent /> : (
-          <SelectCategoryInfoComponent
+        <section className="dashboard__top-section">
+          <HeaderComponent
             selectPath={props.selectPath}
             category={props.categories}
+            onPathClick={this.handleCategoriesSelectClick}
           />
-          )
-        }
+        </section>
+        <section className="dashboard__mid-section">
+          <CategoriesTreeComponent
+            {...props}
+            onOpenStateChangeClick={this.handleCategoriesOpenStateChangeClick}
+            onSelectClick={this.handleCategoriesSelectClick}
+          />
+          {props.selectPath === '/' ?
+            <DashboardRootComponent /> : (
+              <SelectCategoryInfoComponent
+                selectPath={props.selectPath}
+                category={props.categories}
+              />
+            )
+          }
+        </section>
+        <section className="dashboard__bottom-section">
+          BOTTOM
+        </section>
       </section>
     );
   }

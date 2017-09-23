@@ -2,6 +2,8 @@ import * as React from 'react';
 
 export default function() {
   return (
-    <div>Root</div>
+    <div className="select-category-info">
+      Root
+    </div>
   );
 }
