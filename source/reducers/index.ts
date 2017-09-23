@@ -6,6 +6,7 @@ import { combineReducers } from 'redux';
 import * as categories from './categories';
 import news from './news';
 import * as groups from './groups';
+import * as knowledges from './knowledges';
 import * as roles from './roles';
 import * as tags from './tags';
 import * as users from './users';
@@ -14,6 +15,7 @@ import * as users from './users';
 export interface GlobalState extends
   categories.State,
   groups.State,
+  knowledges.State,
   roles.State,
   tags.State,
   users.State {}
@@ -21,6 +23,7 @@ export interface GlobalState extends
 export default combineReducers({
   ...categories.reducers,
   ...groups.reducers,
+  ...knowledges.reducers,
   ...roles.reducers,
   ...tags.reducers,
   ...users.reducers,

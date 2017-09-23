@@ -23,7 +23,8 @@
     "lint:scripts": "tslint 'source/**/*.{ts,tsx}'",
     "lint:scripts:fix": "tslint --fix 'source/**/*.{ts,tsx}' 'tools/**/*.ts'",
     "lint:styles": "stylelint 'source/**/*.css'",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "ts-node": "ts-node"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",

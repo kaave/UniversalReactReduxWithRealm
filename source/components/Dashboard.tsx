@@ -20,6 +20,7 @@ import { CategoriesTree } from '../entities/categoriesTree';
 export interface Props {
   categoryTreeIsOpenChange: (targetFullPath: string) => void;
   categoryTreeSelect: (selectFullPath: string) => void;
+  knowledgeSummariesGetStart: (category: string) => void;
   news: string[];
   knowledges: string[];
   categories: CategoriesTree;
@@ -52,6 +53,7 @@ export default class Dashboard extends React.Component<Props, {}> {
 
   handleCategoriesSelectClick(event: React.MouseEvent<HTMLButtonElement>) {
     this.props.categoryTreeSelect(event.currentTarget.value);
+    this.props.knowledgeSummariesGetStart(event.currentTarget.value);
   }
 
   render() {

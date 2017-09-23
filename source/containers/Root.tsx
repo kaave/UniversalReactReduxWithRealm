@@ -8,6 +8,7 @@ import * as Routes from '../routes';
 // import { actions as KnowledgeActions } from '../actions/knowledgeForm';
 // import { actions as NewsActions } from '../actions/news';
 import { actions as CategoriesActions } from '../actions/categories';
+import { actions as KnowledgesActions } from '../actions/knowledges';
 import { GlobalState } from '../reducers';
 import FetchDataProps from '../types/FetchDataProps';
 
@@ -17,7 +18,10 @@ function mapStateToProps(state: GlobalState) {
 
 function mapDispatchToProps(dispatch: Dispatch<any>) {
   return bindActionCreators(
-    { ...CategoriesActions },
+    {
+      ...CategoriesActions,
+      ...KnowledgesActions,
+    },
     dispatch,
   );
 }

@@ -2,9 +2,10 @@ import { Application, Request, Response, Router } from 'express';
 
 import config from '../common/config';
 import { getVerifyMiddleware } from '../auths/middlewares';
-import news from './news';
 import categories from './categories';
 import groups from './groups';
+import knowledges from './knowledges';
+import news from './news';
 import roles from './roles';
 import tags from './tags';
 import users from './users';
@@ -15,9 +16,10 @@ router.get('/', getVerifyMiddleware('Api'), (req: Request, res: Response) => {
   res.send('Sorry, this url is NOT application\'s root 🌝');
 });
 
-router.use('/news', news);
 router.use('/categories', categories);
 router.use('/groups', groups);
+router.use('/knowledges', knowledges);
+router.use('/news', news);
 router.use('/roles', roles);
 router.use('/tags', tags);
 router.use('/users', users);
