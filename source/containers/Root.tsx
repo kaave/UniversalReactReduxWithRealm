@@ -42,10 +42,13 @@ export default connect(
           {...{ path, exact }}
           key={`${Math.random()}ROUTE_`}
           // tslint:disable-next-line
-          render={reactRouterProps => <MountComponent {...{ ...reactRouterProps, ...props }} />}
+          render={reactRouterProps => (
+            <MountComponent
+              {...{ ...reactRouterProps, ...props, params: reactRouterProps.match.params }}
+            />
+          )}
         />
-      ))
-    }
+      ))}
     {/* {redirects} */}
   </Switch>
 ));

@@ -1,27 +1,31 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 import { CategoriesTree } from '../../entities/categoriesTree';
 
 interface Props {
   category: CategoriesTree;
   selectPath: string;
-  onPathClick: React.EventHandler<React.MouseEvent<HTMLButtonElement>>;
 }
 
-function SelectPathWithLink({ selectPath, onPathClick }: Props) {
+function SelectPathWithLink({ selectPath }: Props) {
   const splitPath = selectPath.split('/').filter(path => !!path);
+  const splitPathLength = splitPath.length;
   return (
     <div className="header__title-select-path">
       {splitPath.map((path, i) => ([
         <span key="1" className="header__title-select-path-slash">/</span>,
-        <button
-          key="2"
-          className="header__title-select-path-link"
-          value={`/${[...splitPath.slice(0, i + 1)].join('/')}`}
-          onClick={onPathClick}
-        >
-          {path}
-        </button>,
+        (splitPathLength > i + 1) ? (
+          <Link
+            key="2"
+            to={`/categories/${[...splitPath.slice(0, i + 1)].join('/')}`}
+            className="header__title-select-path-link"
+          >
+            {path}
+          </Link>
+        ) : (
+          <span key="2">{path}</span>
+        ),
       ]))}
     </div>
   );

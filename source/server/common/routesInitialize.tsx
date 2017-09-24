@@ -58,9 +58,17 @@ export default function routesInitialize(app: express.Express) {
     }
 
     const store = getStore({ isServer: true });
-    const foundPath = Routes.routes.find(({ path, exact }) => (
-      matchPath(req.url, { path, exact, strict: false }) != null
-    ));
+    const foundPath = Routes.routes.find(route => {
+      const { path, exact } = route;
+      const match = matchPath<{ [key: string]: string }>(req.url, { path, exact, strict: false });
+      if (match) {
+        route.params = Object.keys(match.params).reduce((tempData, key) => {
+          tempData[key] = decodeURIComponent(match.params[key]);
+          return tempData;
+        }, {} as { [key: string]: string });
+      }
+      return match != null;
+    });
 
     const component = (foundPath && (foundPath.component || {})) as UniversalComponent;
     const fetchData = (component && component.fetchData) ||

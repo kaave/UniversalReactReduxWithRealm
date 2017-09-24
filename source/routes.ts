@@ -6,7 +6,7 @@ export interface Route {
   path: string;
   component: ComponentClass | SFC<any>;
   exact: boolean;
-  params?: {};
+  params?: { [key: string]: string };
 }
 
 export interface Context {
@@ -27,6 +27,11 @@ export const routes: Route[] = [
     path: '/',
     component: Dashboard,
     exact: true,
+  },
+  {
+    path: '/categories/:category+',
+    component: Dashboard,
+    exact: false,
   },
 ];
 

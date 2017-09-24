@@ -6,11 +6,14 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { Store } from 'redux';
 import { fromJS } from 'immutable';
+import { ConnectedRouter } from 'react-router-redux';
+import createHistory from 'history/createBrowserHistory';
 
-// import knowledgeForm from '../models/KnowledgeEditForm';
 import getStore from '../stores';
 import Root from '../containers/Root';
 import '../styles/index.css';
+
+export const history = createHistory();
 
 class Main {
   mountElement: HTMLElement;
@@ -34,16 +37,16 @@ class Main {
 
     const plainState: { [key: string]: any } = JSON.parse(state);
     const preloadedState = { ...plainState, news: fromJS(plainState.news) };
-    this.store = getStore({ preloadedState });
+    this.store = getStore({ preloadedState, history });
     this.render();
   }
 
   render() {
     render((
       <Provider store={this.store}>
-        <Router>
+        <ConnectedRouter history={history}>
           <Root />
-        </Router>
+        </ConnectedRouter>
       </Provider>
     ), this.mountElement);
   }

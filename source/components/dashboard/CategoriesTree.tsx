@@ -1,5 +1,6 @@
 // tslint:disable:jsx-no-multiline-js
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 import { CategoriesTree } from '../../entities/categoriesTree';
 
@@ -7,7 +8,6 @@ interface Props {
   categories: CategoriesTree;
   selectPath: string;
   onOpenStateChangeClick: React.EventHandler<React.MouseEvent<HTMLButtonElement>>;
-  onSelectClick: React.EventHandler<React.MouseEvent<HTMLButtonElement>>;
 }
 
 function CategoriesTreeParent(props: Props): JSX.Element {
@@ -15,7 +15,6 @@ function CategoriesTreeParent(props: Props): JSX.Element {
     categories: { path, fullPath, count, isOpen, children: childCategories },
     selectPath,
     onOpenStateChangeClick,
-    onSelectClick,
   } = props;
   const style = {
     visibility: fullPath !== '/' && childCategories && childCategories.length > 0 ? 'visible' : 'hidden',
@@ -32,14 +31,13 @@ function CategoriesTreeParent(props: Props): JSX.Element {
         >
           <span className={`fa fa-${isOpen ? 'minus' : 'chevron-right'}`} />
         </button>
-        <button
+        <Link
+          to={`/categories${fullPath}`}
           className="categories-tree__button categories-tree__button--select"
-          onClick={onSelectClick}
-          value={fullPath}
         >
           <span className="categories-tree__desc">{path}</span>
           <span className="categories-tree__count">{count}</span>
-        </button>
+        </Link>
       </li>
       {isOpen && childCategories && (
         <li className="categories-tree__sub">
@@ -48,7 +46,6 @@ function CategoriesTreeParent(props: Props): JSX.Element {
               key={i.toString()}
               categories={childCategory}
               onOpenStateChangeClick={onOpenStateChangeClick}
-              onSelectClick={onSelectClick}
               selectPath={selectPath}
             />
           ))}

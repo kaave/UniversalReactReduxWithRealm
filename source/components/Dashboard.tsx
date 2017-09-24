@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Location } from 'history';
 
 import HeaderComponent from './common/Header';
 import CategoriesTreeComponent from './dashboard/CategoriesTree';
@@ -25,6 +26,7 @@ export interface Props {
   knowledges: string[];
   categories: CategoriesTree;
   selectPath: string;
+  params: { category?: string };
 }
 
 export default class Dashboard extends React.Component<Props, {}> {
@@ -34,13 +36,22 @@ export default class Dashboard extends React.Component<Props, {}> {
     store.dispatch(RolesActions.getDone(await getRolesEntity()));
     store.dispatch(TagsActions.getDone(await getTagsEntity()));
     store.dispatch(UsersActions.getSummariesDone(await getUserSummariesEntity()));
+    store.dispatch(CategoriesActions.categoryTreeSelect(`/${params.category}`));
   }
 
   constructor(props: Props) {
     super(props);
     this.handleNewKnowledgeClick = this.handleNewKnowledgeClick.bind(this);
     this.handleCategoriesOpenStateChangeClick = this.handleCategoriesOpenStateChangeClick.bind(this);
-    this.handleCategoriesSelectClick = this.handleCategoriesSelectClick.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.params.category) {
+      const selectPath = `/${this.props.params.category}`;
+      if (this.props.selectPath !== selectPath)  {
+        this.setSelectCategoryTree(selectPath);
+      }
+    }
   }
 
   handleNewKnowledgeClick() {
@@ -51,9 +62,9 @@ export default class Dashboard extends React.Component<Props, {}> {
     this.props.categoryTreeIsOpenChange(event.currentTarget.value);
   }
 
-  handleCategoriesSelectClick(event: React.MouseEvent<HTMLButtonElement>) {
-    this.props.categoryTreeSelect(event.currentTarget.value);
-    this.props.knowledgeSummariesGetStart(event.currentTarget.value);
+  setSelectCategoryTree(category: string) {
+    this.props.categoryTreeSelect(category);
+    this.props.knowledgeSummariesGetStart(category);
   }
 
   render() {
@@ -65,14 +76,12 @@ export default class Dashboard extends React.Component<Props, {}> {
           <HeaderComponent
             selectPath={props.selectPath}
             category={props.categories}
-            onPathClick={this.handleCategoriesSelectClick}
           />
         </section>
         <section className="dashboard__mid-section">
           <CategoriesTreeComponent
             {...props}
             onOpenStateChangeClick={this.handleCategoriesOpenStateChangeClick}
-            onSelectClick={this.handleCategoriesSelectClick}
           />
           {props.selectPath === '/' ?
             <DashboardRootComponent /> : (

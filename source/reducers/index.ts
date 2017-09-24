@@ -1,6 +1,5 @@
-// @flow
-
 import { combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux';
 
 // import knowledgeForm from './knowledgeForm';
 import * as categories from './categories';
@@ -28,4 +27,5 @@ export default combineReducers({
   ...tags.reducers,
   ...users.reducers,
   ...news,
+  router: routerReducer,
 });
